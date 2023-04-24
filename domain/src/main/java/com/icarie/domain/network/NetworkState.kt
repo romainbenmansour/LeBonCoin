@@ -1,4 +1,4 @@
-package com.deezer.zen.domain.network
+package com.icarie.domain.network
 
 enum class NetworkState {
     UNKNOWN,

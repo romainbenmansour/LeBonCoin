@@ -1,4 +1,4 @@
-package com.deezer.zen.domain.common
+package com.icarie.domain.common
 
 interface Controller {
     fun start()

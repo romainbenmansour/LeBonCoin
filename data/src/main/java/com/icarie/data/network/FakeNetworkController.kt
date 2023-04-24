@@ -8,63 +8,46 @@ import com.icarie.data.di.RepositoryCoroutineContext
 import com.icarie.domain.network.NetworkController
 import com.icarie.domain.network.NetworkState
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class NetworkControllerImpl @Inject constructor(
+class FakeNetworkController @Inject constructor(
     @RepositoryCoroutineContext coroutineContext: CoroutineContext,
-    private val connectivityManager: ConnectivityManager
 ) : NetworkController {
 
     private val coroutineScope: CoroutineScope = CoroutineScope(coroutineContext)
-
-    @VisibleForTesting
-    val networkCallback: ConnectivityCallback = ConnectivityCallback()
 
     override val networkStateFlow: MutableStateFlow<NetworkState> =
         MutableStateFlow(NetworkState.UNKNOWN)
 
     init {
-        networkStateFlow.value = getNetworkState()
+        coroutineScope.launch {
+            while (true) {
+                dispatchNetworkUpdate(NetworkState.CONNECTED)
+                delay(1000)
+                dispatchNetworkUpdate(NetworkState.DISCONNECTED)
+                delay(1000)
+            }
+        }
     }
 
     override fun start() {
-        subscribeToNetworkUpdates()
     }
 
-    override fun getNetworkState(): NetworkState =
-        connectivityManager
-            .getNetworkCapabilities(connectivityManager.activeNetwork)
-            ?.let { NetworkState.CONNECTED }
-            ?: NetworkState.DISCONNECTED
+    override fun getNetworkState(): NetworkState = networkStateFlow.value
 
     override fun hasNetworkAccess(): Boolean = getNetworkState() == NetworkState.CONNECTED
 
-    override fun isWifi(): Boolean =
-        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            ?.run {
-                hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
-            } ?: false
+    override fun isWifi(): Boolean = false
 
-    override fun isMobile(): Boolean =
-        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            ?.run {
-                hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
-            } ?: false
-
-    private fun subscribeToNetworkUpdates() {
-        connectivityManager.registerDefaultNetworkCallback(networkCallback)
-    }
+    override fun isMobile(): Boolean = false
 
     @VisibleForTesting
     fun dispatchNetworkUpdate(networkState: NetworkState) {
-        if (networkStateFlow.value == networkState) {
-            Timber.i("not dispatching network update for state: $networkState")
-            return
-        }
         coroutineScope.launch {
             Timber.i("dispatching network update: $networkState")
             networkStateFlow.emit(networkState)

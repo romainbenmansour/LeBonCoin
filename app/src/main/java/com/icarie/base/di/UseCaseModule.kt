@@ -1,4 +1,4 @@
-package com.icarie.base.app.di
+package com.icarie.base.di
 
 import com.icarie.domain.network.GetNetworkStateUpdatesAsFlowUseCase
 import com.icarie.domain.network.GetNetworkStateUpdatesAsFlowUseCaseImpl

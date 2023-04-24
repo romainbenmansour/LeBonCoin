@@ -1,5 +1,6 @@
 package com.icarie.data.di
 
+import com.icarie.data.network.FakeNetworkController
 import com.icarie.data.network.NetworkControllerImpl
 import com.icarie.domain.network.NetworkController
 import dagger.Binds
@@ -14,5 +15,5 @@ interface RepositoryModule {
 
     @Binds
     @Singleton
-    fun bindNetworkController(impl: NetworkControllerImpl): NetworkController
+    fun bindNetworkController(impl: FakeNetworkController): NetworkController
 }
