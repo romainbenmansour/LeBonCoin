@@ -1,0 +1,138 @@
+[versions]
+
+# Network
+apolloVersion = '3.8.1'
+
+# Compose
+accompanist = '0.25.1'
+compose = '1.3.3'
+
+# Kotlin
+kotlin = '1.8.10'
+kotlinCompiler = '1.4.2'
+coroutinesVersion = '1.6.4'
+
+[libraries]
+
+# Play Services
+playServices = 'com.google.android.gms:play-services-base:18.2.0'
+
+coreSplashscreen = "androidx.core:core-splashscreen:1.0.1"
+activity = "androidx.activity:activity-ktx:1.7.1"
+appCompat = "androidx.appcompat:appcompat:1.6.1"
+material = "com.google.android.material:material:1.8.0"
+constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+lifecycleProcess = "androidx.lifecycle:lifecycle-process:2.6.1"
+lifecycleCommon = "androidx.lifecycle:lifecycle-common:2.6.1"
+lifecycleViewModels = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+
+# Kotlin
+kotlinCore = "androidx.core:core-ktx:1.10.0"
+kotlinSerialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinSerializationJson = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
+kotlinImmutable = "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5"
+
+# Compose
+composeBom = "androidx.compose:compose-bom:2023.01.00"
+composeUI = { module = "androidx.compose.ui:ui"}
+composeUIPreview = { module = "androidx.compose.ui:ui-tooling-preview"}
+composeUITooling = { module = "androidx.compose.ui:ui-tooling"}
+composeFoundation = { module = "androidx.compose.foundation:foundation"}
+composeMaterial = { module = "androidx.compose.material:material"}
+composeIconsCore = { module = "androidx.compose.material:material-icons-core"}
+composeIconsExtended = { module = "androidx.compose.material:material-icons-extended"}
+composeActivity = "androidx.activity:activity-compose:1.7.1"
+
+# Compose Toolbar
+composeToolbar = "me.onebone:toolbar-compose:2.3.5"
+
+# Navigation
+composeNavigation = "androidx.navigation:navigation-compose:2.5.3"
+
+# Gradle
+gradle = "com.android.tools.build:gradle:7.4.2"
+
+# Firebase BoM (Bill of Materials) https://firebase.google.com/docs/android/learn-more#bom
+firebaseBom = "com.google.firebase:firebase-bom:31.5.0"
+
+# Firebase Crashlytics
+crashlytics = "com.google.firebase:firebase-crashlytics-gradle:2.9.5"
+
+# Firebase App Distribution
+firebaseAppDistribution = "com.google.firebase:firebase-appdistribution-gradle:4.0.0"
+firebaseRemoteConfig = "com.google.firebase:firebase-config-ktx:21.3.0"
+
+# Firebase Dynaaamic Links
+firebaseDynamicLinks = "com.google.firebase:firebase-dynamic-links-ktx:21.1.0"
+
+# Firebase Performance Monitoring
+firebasePerf = "com.google.firebase:firebase-perf-ktx:20.3.1"
+firebasePerfPlugin = "com.google.firebase:perf-plugin:1.4.2"
+
+#Firebase Cloud Messaging
+firebaseMessaging = "com.google.firebase:firebase-messaging:23.1.2"
+
+# Google Services
+googleServices = "com.google.gms:google-services:4.3.15"
+
+# Ktlint
+ktlint = "org.jlleitschuh.gradle:ktlint-gradle:11.0.0"
+
+# Reveal Swipe
+revealSwipe = "de.charlex.compose:revealswipe:1.1.0"
+
+# Time
+jodaAndroid = "net.danlew:android.joda:2.12.5"
+joda = "joda-time:joda-time:2.12.5"
+
+# Accompanist
+accompanistPlaceHolder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompanist" }
+accompanistNavAnimation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanist" }
+accompanistNavMaterial = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
+accompanistSwipeRefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanist" }
+
+# DataStore
+dataStore = "androidx.datastore:datastore-preferences:1.0.0"
+
+# Coil
+coilCompose = "io.coil-kt:coil-compose:2.3.0"
+
+# Lottie
+lottie = "com.airbnb.android:lottie-compose:6.0.0"
+
+# DI
+javaxInject = "javax.inject:javax.inject:1"
+hilt = "com.google.dagger:hilt-android:2.45"
+hiltCompiler = "com.google.dagger:hilt-compiler:2.45"
+hiltCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
+hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:2.45"
+
+# Kotlin
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutinesVersion" }
+
+# Log
+timber = "com.jakewharton.timber:timber:5.0.1"
+
+# Paging
+paging = "androidx.paging:paging-runtime-ktx:3.1.1"
+pagingCommon = "androidx.paging:paging-common-ktx:3.1.1"
+pagingCompose = "androidx.paging:paging-compose:1.0.0-alpha18"
+
+# Tests
+robolectric = "org.robolectric:robolectric:4.9"
+mockkAndroid = "io.mockk:mockk-android:1.13.5"
+mockk = "io.mockk:mockk:1.13.5"
+testMockWebServer = "com.squareup.okhttp3:mockwebserver:4.11.0"
+testKotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesVersion" }
+testArchCore = "androidx.arch.core:core-testing:2.1.0"
+testCore = "androidx.test:core:1.4.0"
+junit = "junit:junit:4.13.2"
+turbine = "app.cash.turbine:turbine:0.12.3"
+
+# Android Tests
+testExtJUnit = "androidx.test.ext:junit:1.1.5"
+expressoCore = "androidx.test.espresso:espresso-core:3.5.1"
+
+[plugins]
