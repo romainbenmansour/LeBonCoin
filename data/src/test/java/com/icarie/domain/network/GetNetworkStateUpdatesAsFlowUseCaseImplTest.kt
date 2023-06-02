@@ -11,20 +11,20 @@ class GetNetworkStateUpdatesAsFlowUseCaseImplTest {
     private lateinit var getNetworkStateUpdatesAsFlowUseCase: GetNetworkStateUpdatesAsFlowUseCaseImpl
 
     @RelaxedMockK
-    private lateinit var networkController: NetworkController
+    private lateinit var networkRepository: NetworkRepository
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
 
-        getNetworkStateUpdatesAsFlowUseCase = GetNetworkStateUpdatesAsFlowUseCaseImpl(networkController)
+        getNetworkStateUpdatesAsFlowUseCase = GetNetworkStateUpdatesAsFlowUseCaseImpl(networkRepository)
     }
 
     @Test
     fun `test update flow is properly requested from network repository`() {
         getNetworkStateUpdatesAsFlowUseCase.invoke()
 
-        verifyOnce { networkController.networkStateFlow }
+        verifyOnce { networkRepository.networkStateFlow }
     }
 }
 

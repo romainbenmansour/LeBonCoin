@@ -1,6 +1,6 @@
 package com.icarie.base.app
 
-import com.icarie.domain.network.NetworkController
+import com.icarie.domain.network.NetworkRepository
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verify
@@ -12,19 +12,19 @@ internal class ControllerManagerImplTest {
     private lateinit var controllerManager: ControllerManagerImpl
 
     @RelaxedMockK
-    private lateinit var networkController: NetworkController
+    private lateinit var networkRepository: NetworkRepository
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
 
-        controllerManager = ControllerManagerImpl(networkController)
+        controllerManager = ControllerManagerImpl(networkRepository)
     }
 
     @Test
     fun `test network controller is properly started upon manager start`() {
         controllerManager.start()
 
-        verify(exactly = 1) { networkController.start() }
+        verify(exactly = 1) { networkRepository.start() }
     }
 }

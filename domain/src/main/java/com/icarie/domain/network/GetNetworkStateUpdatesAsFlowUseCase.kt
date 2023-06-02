@@ -8,7 +8,7 @@ interface GetNetworkStateUpdatesAsFlowUseCase {
 }
 
 class GetNetworkStateUpdatesAsFlowUseCaseImpl @Inject constructor(
-    private val networkController: NetworkController
+    private val networkRepository: NetworkRepository
 ) : GetNetworkStateUpdatesAsFlowUseCase {
-    override operator fun invoke(): Flow<NetworkState> = networkController.networkStateFlow
+    override operator fun invoke(): Flow<NetworkState> = networkRepository.networkStateFlow
 }

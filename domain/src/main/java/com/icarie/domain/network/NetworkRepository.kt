@@ -3,7 +3,7 @@ package com.icarie.domain.network
 import com.icarie.domain.common.Controller
 import kotlinx.coroutines.flow.Flow
 
-interface NetworkController : Controller {
+interface NetworkRepository : Controller {
 
     val networkStateFlow: Flow<NetworkState>
 

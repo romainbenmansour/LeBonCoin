@@ -5,7 +5,7 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import androidx.annotation.VisibleForTesting
 import com.icarie.data.di.RepositoryCoroutineContext
-import com.icarie.domain.network.NetworkController
+import com.icarie.domain.network.NetworkRepository
 import com.icarie.domain.network.NetworkState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -15,9 +15,9 @@ import timber.log.Timber
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class FakeNetworkController @Inject constructor(
+class FakeNetworkRepository @Inject constructor(
     @RepositoryCoroutineContext coroutineContext: CoroutineContext,
-) : NetworkController {
+) : NetworkRepository {
 
     private val coroutineScope: CoroutineScope = CoroutineScope(coroutineContext)
 

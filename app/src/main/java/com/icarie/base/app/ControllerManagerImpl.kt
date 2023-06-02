@@ -1,13 +1,13 @@
 package com.icarie.base.app
 
-import com.icarie.domain.network.NetworkController
+import com.icarie.domain.network.NetworkRepository
 import javax.inject.Inject
 
 class ControllerManagerImpl @Inject constructor(
-    private val networkController: NetworkController
+    private val networkRepository: NetworkRepository
 ) : ControllerManager {
 
     override fun start() {
-        networkController.start()
+        networkRepository.start()
     }
 }
