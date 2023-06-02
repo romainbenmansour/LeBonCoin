@@ -61,4 +61,5 @@ dependencies {
     testImplementation libs.junit
     testImplementation libs.testExtJUnit
     testImplementation libs.expressoCore
+    testImplementation libs.mockk
 }

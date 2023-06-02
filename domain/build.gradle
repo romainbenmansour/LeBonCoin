@@ -12,4 +12,7 @@ dependencies {
     implementation libs.coroutines
 
     implementation libs.javaxInject
+
+    testImplementation libs.junit
+    testImplementation libs.mockk
 }
