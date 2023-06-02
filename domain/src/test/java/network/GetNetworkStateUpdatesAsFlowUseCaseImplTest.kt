@@ -1,5 +1,7 @@
-package com.icarie.domain.network
+package network
 
+import com.icarie.domain.network.GetNetworkStateUpdatesAsFlowUseCaseImpl
+import com.icarie.domain.network.NetworkRepository
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verify
