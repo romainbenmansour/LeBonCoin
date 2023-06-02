@@ -25,11 +25,7 @@ class NetworkRepositoryImpl @Inject constructor(
     val networkCallback: ConnectivityCallback = ConnectivityCallback()
 
     override val networkStateFlow: MutableStateFlow<NetworkState> =
-        MutableStateFlow(NetworkState.UNKNOWN)
-
-    init {
-        networkStateFlow.value = getNetworkState()
-    }
+        MutableStateFlow(getNetworkState())
 
     override fun start() {
         subscribeToNetworkUpdates()
