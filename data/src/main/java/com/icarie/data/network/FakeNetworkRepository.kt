@@ -28,9 +28,9 @@ class FakeNetworkRepository @Inject constructor(
         coroutineScope.launch {
             while (true) {
                 dispatchNetworkUpdate(NetworkState.CONNECTED)
-                delay(1000)
+                delay(3000)
                 dispatchNetworkUpdate(NetworkState.DISCONNECTED)
-                delay(1000)
+                delay(3000)
             }
         }
     }
