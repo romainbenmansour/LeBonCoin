@@ -1,4 +1,4 @@
-package com.icarie.base.network
+package com.icarie.base.ui.compose.composables
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.animateContentSize
@@ -29,6 +29,7 @@ import com.icarie.base.ui.compose.config.AppSpacings
 import com.icarie.base.ui.compose.config.green
 import com.icarie.base.ui.compose.config.red
 import com.icarie.base.R
+import com.icarie.base.ui.main.TimeLimitedView
 import kotlin.time.Duration.Companion.seconds
 
 @Composable

@@ -1,4 +1,4 @@
-package com.icarie.base.network
+package com.icarie.base.ui.main
 
 import com.icarie.domain.network.NetworkState
 import javax.inject.Inject
