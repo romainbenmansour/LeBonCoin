@@ -51,12 +51,17 @@ dependencies {
 
     implementation libs.kotlinCore
     implementation libs.coroutines
+    implementation libs.kotlinImmutable
 
     implementation libs.material
     implementation libs.appCompat
     implementation libs.activity
     implementation libs.constraintLayout
     implementation libs.coilCompose
+
+    implementation libs.composeNavigation
+    implementation libs.accompanistNavAnimation
+    implementation libs.accompanistNavMaterial
 
     implementation platform(libs.composeBom)
     implementation libs.composeUI
@@ -77,6 +82,7 @@ dependencies {
     implementation libs.timber
 
     implementation libs.hilt
+    implementation libs.hiltCompose
     kapt libs.hiltCompiler
 
     testImplementation libs.junit

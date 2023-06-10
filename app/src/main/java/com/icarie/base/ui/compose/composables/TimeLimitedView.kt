@@ -1,4 +1,4 @@
-package com.icarie.base.network
+package com.icarie.base.ui.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
