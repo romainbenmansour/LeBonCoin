@@ -3,6 +3,7 @@ package com.icarie.base.navigation
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -16,9 +17,10 @@ import com.icarie.base.navigation.common.composable
 import com.icarie.base.navigation.common.navigation
 import com.icarie.base.ui.compose.UIScreen
 import com.icarie.base.ui.compose.composables.NetworkStateModal
+import com.icarie.base.ui.compose.composables.Title
 import com.icarie.base.ui.compose.composables.UIStateView
 import com.icarie.base.ui.compose.states.UIState
-import com.icarie.base.ui.main.MainScreenUIData
+import com.icarie.base.ui.home.MainScreenUIData
 
 fun NavGraphBuilder.homeGraph(graph: Graph) {
     navigation(graph = graph, start = Screen.Home) {
@@ -38,14 +40,17 @@ private fun NavGraphBuilder.homeScreen() {
 
 @Composable
 private fun MainScreen(uiState: UIState<MainScreenUIData>) {
-    UIScreen {
-        UIStateView(state = uiState) { data ->
-            Box(
-                modifier = Modifier.fillMaxSize().background(Color.Cyan),
-                contentAlignment = Alignment.BottomStart
-            ) {
-                NetworkStateModal(networkState = data.connected)
-            }
+    UIStateView(state = uiState) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Cyan),
+            contentAlignment = Alignment.Center
+        ) {
+            Title(
+                title = "Home Screen",
+                style = MaterialTheme.typography.h1
+            )
         }
     }
 }

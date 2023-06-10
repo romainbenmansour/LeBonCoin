@@ -2,7 +2,7 @@
     <string name="app_name">BASE</string>
     <string name="app_name_short">Base Project</string>
 
-    <string name="errormessage_title_appisoffline">"Connection los"</string>
+    <string name="errormessage_title_appisoffline">"Connection lost"</string>
     <string name="errormessage_title_connectionrestored">You are back online!</string>
 
     <string name="genericerrormessage_title_anerroroccurred">Error</string>
@@ -15,5 +15,6 @@
     <string name="errormessage_text_notconnectedactivatewifiorchecksettings">It seems you are currently not connected, please check your connection</string>
 
     <string name="offline_action_retry_mobile">retry</string>
+    <string name="tabbar_title_home">Home</string>
 
 </resources>

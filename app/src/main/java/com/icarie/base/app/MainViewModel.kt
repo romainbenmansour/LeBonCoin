@@ -2,7 +2,7 @@ package com.icarie.base.app
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.icarie.base.ui.main.MainScreenUIDataTransformer
+import com.icarie.base.ui.home.MainScreenUIDataTransformer
 import com.icarie.base.ui.compose.states.UIState
 import com.icarie.domain.network.GetNetworkStateUpdatesAsFlowUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
