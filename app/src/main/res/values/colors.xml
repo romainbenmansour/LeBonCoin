@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="black_20">#33000000</color>
+    <color name="black_40">#66000000</color>
+    <color name="dark_800">#191922</color>
+    <color name="dark_700">#23232D</color>
+    <color name="dark_600">#32323D</color>
+    <color name="dark_500">#52525D</color>
+    <color name="dark_400">#A2A2AD</color>
+    <color name="dark_300">#D1D1D6</color>
+    <color name="white">#FFFFFF</color>
+
+    <!--  Zen Blue  -->
+    <color name="zen_blue">#7AA7EB</color>
+    <color name="zen_blue_40_zen_cotton">#9AB1D9</color>
+    <color name="zen_blue_85_zen_cotton">#E6EDFC</color>
+    <color name="zen_blue_50_zen_oxford">#3D64A6</color>
+
+    <!--  Zen Green  -->
+    <color name="zen_green">#E4EB94</color>
+
+    <!--  Zen Cotton  -->
+    <color name="zen_cotton">#F9F9FF</color>
+
+    <!--  Zen Oxford  -->
+    <color name="zen_oxford">#0C1D3E</color>
+    <color name="zen_oxford_40_zen_cotton">#6B758B</color>
+    <color name="zen_oxford_opacity_50">#800C1D3E</color>
+    <color name="mood_selector_base_end_gradient">#B8D2FA</color>
+    <color name="red">#F44336</color>
+
 </resources>

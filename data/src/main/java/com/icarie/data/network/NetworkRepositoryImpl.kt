@@ -5,49 +5,62 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import androidx.annotation.VisibleForTesting
 import com.icarie.data.di.RepositoryCoroutineContext
-import com.icarie.domain.network.NetworkController
+import com.icarie.domain.network.NetworkRepository
 import com.icarie.domain.network.NetworkState
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class FakeNetworkController @Inject constructor(
+class NetworkRepositoryImpl @Inject constructor(
     @RepositoryCoroutineContext coroutineContext: CoroutineContext,
-) : NetworkController {
+    private val connectivityManager: ConnectivityManager
+) : NetworkRepository {
 
     private val coroutineScope: CoroutineScope = CoroutineScope(coroutineContext)
 
-    override val networkStateFlow: MutableStateFlow<NetworkState> =
-        MutableStateFlow(NetworkState.UNKNOWN)
+    @VisibleForTesting
+    val networkCallback: ConnectivityCallback = ConnectivityCallback()
 
-    init {
-        coroutineScope.launch {
-            while (true) {
-                dispatchNetworkUpdate(NetworkState.CONNECTED)
-                delay(1000)
-                dispatchNetworkUpdate(NetworkState.DISCONNECTED)
-                delay(1000)
-            }
-        }
-    }
+    override val networkStateFlow: MutableStateFlow<NetworkState> =
+        MutableStateFlow(getNetworkState())
 
     override fun start() {
+        subscribeToNetworkUpdates()
     }
 
-    override fun getNetworkState(): NetworkState = networkStateFlow.value
+    override fun getNetworkState(): NetworkState =
+        connectivityManager
+            .getNetworkCapabilities(connectivityManager.activeNetwork)
+            ?.let { NetworkState.CONNECTED }
+            ?: NetworkState.DISCONNECTED
 
     override fun hasNetworkAccess(): Boolean = getNetworkState() == NetworkState.CONNECTED
 
-    override fun isWifi(): Boolean = false
+    override fun isWifi(): Boolean =
+        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            ?.run {
+                hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+            } ?: false
 
-    override fun isMobile(): Boolean = false
+    override fun isMobile(): Boolean =
+        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            ?.run {
+                hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+            } ?: false
+
+    private fun subscribeToNetworkUpdates() {
+        connectivityManager.registerDefaultNetworkCallback(networkCallback)
+    }
 
     @VisibleForTesting
     fun dispatchNetworkUpdate(networkState: NetworkState) {
+        if (networkStateFlow.value == networkState) {
+            Timber.i("not dispatching network update for state: $networkState")
+            return
+        }
         coroutineScope.launch {
             Timber.i("dispatching network update: $networkState")
             networkStateFlow.emit(networkState)

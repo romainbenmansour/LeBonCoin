@@ -19,6 +19,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.7'
+        kotlinCompilerVersion '1.3.3'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -42,11 +51,28 @@ dependencies {
 
     implementation libs.kotlinCore
     implementation libs.coroutines
+    implementation libs.kotlinImmutable
 
     implementation libs.material
     implementation libs.appCompat
     implementation libs.activity
     implementation libs.constraintLayout
+    implementation libs.coilCompose
+
+    implementation libs.composeNavigation
+    implementation libs.accompanistNavAnimation
+    implementation libs.accompanistNavMaterial
+
+    implementation platform(libs.composeBom)
+    implementation libs.composeUI
+    implementation libs.composeUIPreview
+    implementation libs.composeFoundation
+    implementation libs.composeMaterial
+    implementation libs.composeIconsCore
+    implementation libs.composeIconsExtended
+    implementation libs.composeActivity
+
+    debugImplementation  libs.composeUITooling
 
     implementation libs.lifecycle
     implementation libs.lifecycleProcess
@@ -56,9 +82,11 @@ dependencies {
     implementation libs.timber
 
     implementation libs.hilt
+    implementation libs.hiltCompose
     kapt libs.hiltCompiler
 
     testImplementation libs.junit
     testImplementation libs.testExtJUnit
     testImplementation libs.expressoCore
+    testImplementation libs.mockk
 }

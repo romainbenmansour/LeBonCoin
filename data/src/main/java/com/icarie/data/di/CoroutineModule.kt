@@ -12,6 +12,9 @@ import kotlin.coroutines.CoroutineContext
 @Qualifier
 annotation class RepositoryCoroutineContext
 
+@Qualifier
+annotation class NavigationServiceCoroutineContext
+
 @Module
 @InstallIn(SingletonComponent::class)
 class CoroutineModule {
@@ -20,4 +23,9 @@ class CoroutineModule {
     @RepositoryCoroutineContext
     fun provideRepositoryCoroutineContext(): CoroutineContext =
         Dispatchers.IO + CoroutineName("Repository")
+
+    @Provides
+    @NavigationServiceCoroutineContext
+    fun provideNavigationServiceCoroutineContext(): CoroutineContext =
+        Dispatchers.Main + CoroutineName("Navigation Service")
 }
