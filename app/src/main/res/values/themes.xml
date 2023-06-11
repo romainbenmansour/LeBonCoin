@@ -2,7 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="Theme.BASE" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
         <!--  Primary brand color.  -->
         <item name="colorPrimary">@color/zen_blue</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -30,7 +29,33 @@
         <item name="android:windowBackground">@color/zen_cotton</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowTranslucentNavigation">true</item>
+    </style>
 
+    <style name="Theme.Base.Starting" parent="Theme.SplashScreen">
+        <!--  Set the splash screen background, animated icon, and animation duration.  -->
+        <item name="windowSplashScreenBackground">@color/zen_cotton</item>
+        <!--  Use windowSplashScreenAnimatedIcon to add either a drawable or an
+                     animated drawable. One of these is required.  -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_bottom_nav_home_selected</item>
+        <!--  Set the theme of the Activity that directly follows your splash screen.  -->
+        <!--  Required  -->
+        <item name="postSplashScreenTheme">@style/Theme.BASE</item>
+    </style>
+
+    <style name="BannerBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BannerBottomSheet</item>
+    </style>
+
+    <style name="BannerBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/BannerShapeAppearanceBottomSheetDialog</item>
+    </style>
+
+    <style name="BannerShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
 </resources>
