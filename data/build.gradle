@@ -35,6 +35,10 @@ dependencies {
     implementation libs.kotlinCore
     implementation libs.coroutines
 
+    implementation libs.retrofit
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
     implementation libs.timber
 
     implementation libs.hilt
