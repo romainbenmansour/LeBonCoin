@@ -1,6 +1,6 @@
-package com.icarie.base.app
+package com.icarie.lbc.app
 
-import com.icarie.base.TimberInitializer
+import com.icarie.lbc.TimberInitializer
 import com.icarie.domain.network.NetworkRepository
 import javax.inject.Inject
 

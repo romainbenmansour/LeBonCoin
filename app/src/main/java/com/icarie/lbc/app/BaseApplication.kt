@@ -1,9 +1,7 @@
-package com.icarie.base.app
+package com.icarie.lbc.app
 
 import android.app.Application
-import android.os.Build
 import dagger.hilt.android.HiltAndroidApp
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltAndroidApp

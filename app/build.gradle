@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.icarie.base'
+    namespace 'com.icarie.lbc'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.icarie.base"
+        applicationId "com.icarie.lbc"
         minSdk 24
         targetSdk 33
         versionCode 1

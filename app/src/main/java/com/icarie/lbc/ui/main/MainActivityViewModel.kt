@@ -1,4 +1,4 @@
-package com.icarie.base.ui.main
+package com.icarie.lbc.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

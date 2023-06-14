@@ -1,4 +1,4 @@
-package com.icarie.base.app
+package com.icarie.lbc.app
 
 import com.icarie.domain.common.Controller
 

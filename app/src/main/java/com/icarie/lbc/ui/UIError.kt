@@ -1,7 +1,7 @@
-package com.icarie.base.ui
+package com.icarie.lbc.ui
 
 import androidx.annotation.StringRes
-import com.icarie.base.R
+import com.icarie.lbc.R
 import com.icarie.domain.errors.AppError
 
 fun AppError.toGlobalUIError() = toUIError()

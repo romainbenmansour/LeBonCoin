@@ -1,7 +1,7 @@
-package com.icarie.base.di
+package com.icarie.lbc.di
 
-import com.icarie.base.app.ControllerManager
-import com.icarie.base.app.ControllerManagerImpl
+import com.icarie.lbc.app.ControllerManager
+import com.icarie.lbc.app.ControllerManagerImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

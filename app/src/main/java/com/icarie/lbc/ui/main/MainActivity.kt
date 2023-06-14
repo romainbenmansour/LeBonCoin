@@ -1,9 +1,9 @@
-package com.icarie.base.ui.main
+package com.icarie.lbc.ui.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.icarie.base.R
+import com.icarie.lbc.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

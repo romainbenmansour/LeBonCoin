@@ -1,6 +1,4 @@
-package com.icarie.base.ui.dialog
-
-import com.icarie.base.ui.dialog.ActionType
+package com.icarie.lbc.ui.dialog
 
 data class DialogAction(
     val type: ActionType,

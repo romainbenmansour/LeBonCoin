@@ -1,4 +1,4 @@
-package com.icarie.base.ui.dialog
+package com.icarie.lbc.ui.dialog
 
 data class DialogPayload(
     val title: String,

@@ -1,4 +1,4 @@
-package com.icarie.base.utils
+package com.icarie.lbc.utils
 
 import android.app.Activity
 import android.content.Context
