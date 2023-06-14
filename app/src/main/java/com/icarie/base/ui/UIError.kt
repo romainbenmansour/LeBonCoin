@@ -1,4 +1,4 @@
-package com.icarie.base.ui.compose.errors
+package com.icarie.base.ui
 
 import androidx.annotation.StringRes
 import com.icarie.base.R
