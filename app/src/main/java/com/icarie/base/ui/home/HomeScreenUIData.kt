@@ -1,5 +1,5 @@
 package com.icarie.base.ui.home
 
-data class MainScreenUIData(
+data class HomeScreenUIData(
     val connected: Boolean
 )

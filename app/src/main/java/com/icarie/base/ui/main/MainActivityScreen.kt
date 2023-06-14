@@ -53,6 +53,7 @@ fun MainActivityScreen(
     networkState: NetworkState,
     graphBuilder: GraphBuilder,
     startGraph: String,
+    isBottomContentEnabled: Boolean,
 ) {
     UIScreen {
         Column(
@@ -66,14 +67,16 @@ fun MainActivityScreen(
                 graphBuilder.build(this)
             }
 
-            NetworkStateModal(
-                networkState = networkState == NetworkState.CONNECTED,
-            )
+            if (isBottomContentEnabled) {
+                NetworkStateModal(
+                    networkState = networkState == NetworkState.CONNECTED,
+                )
 
-            BottomContent(
-                modifier = Modifier.fillMaxWidth(),
-                navController = navController,
-            )
+                BottomContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    navController = navController,
+                )
+            }
         }
 
         BottomSheetContainer(

@@ -79,6 +79,9 @@ dependencies {
     implementation libs.lifecycleCommon
     implementation libs.lifecycleViewModels
 
+    implementation libs.lottie
+    implementation libs.coreSplashscreen
+
     implementation libs.timber
 
     implementation libs.hilt

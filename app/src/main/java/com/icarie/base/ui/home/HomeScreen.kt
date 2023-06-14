@@ -1,4 +1,4 @@
-package com.icarie.base.navigation
+package com.icarie.base.ui.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,39 +10,15 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavGraphBuilder
-import com.icarie.base.app.MainViewModel
-import com.icarie.base.navigation.common.composable
-import com.icarie.base.navigation.common.navigation
 import com.icarie.base.ui.compose.UIScreen
 import com.icarie.base.ui.compose.composables.Title
 import com.icarie.base.ui.compose.composables.UIStateView
 import com.icarie.base.ui.compose.config.AppSpacings
 import com.icarie.base.ui.compose.states.UIState
-import com.icarie.base.ui.home.MainScreenUIData
-
-fun NavGraphBuilder.homeGraph(graph: Graph) {
-    navigation(graph = graph, start = Screen.Home) {
-        homeScreen()
-    }
-}
-
-private fun NavGraphBuilder.homeScreen() {
-    composable(Screen.Home) {
-        val mainViewModel = hiltViewModel<MainViewModel>()
-        val uiState by mainViewModel.uiStateData.collectAsState()
-        MainScreen(
-            uiState = uiState
-        )
-    }
-}
 
 @Composable
-private fun MainScreen(uiState: UIState<MainScreenUIData>) {
+fun HomeScreen(uiState: UIState<HomeScreenUIData>) {
     UIScreen {
         UIStateView(state = uiState) {
             Column(
