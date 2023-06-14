@@ -5,7 +5,7 @@ import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 @HiltAndroidApp
-class BaseApplication : Application() {
+class LBCApplication : Application() {
 
     @Inject
     lateinit var controllerManager: ControllerManager
