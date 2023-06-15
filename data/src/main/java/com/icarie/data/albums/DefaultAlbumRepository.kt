@@ -1,9 +1,11 @@
 package com.icarie.data.albums
 
+import androidx.paging.PagingData
 import com.icarie.data.di.RepositoryCoroutineContext
 import com.icarie.domain.album.AlbumRepository
 import com.icarie.domain.common.Status
 import com.icarie.domain.models.Album
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
@@ -15,21 +17,20 @@ class DefaultAlbumRepository @Inject constructor(
     private val remoteAlbumDataSource: RemoteAlbumDataSource
 ) : AlbumRepository {
 
-    // First shot with no pagination
-    override suspend fun getAlbums(pageSize: Int): Status<List<Album>> =
+    override suspend fun getAlbums(pageSize: Int): Status<Flow<PagingData<Album>>> =
         withContext(coroutineContext) {
             if (!localAlbumDataSource.hasCache()) {
                 remoteAlbumDataSource.fetchAlbums().apply {
                     when (this) {
-                        is Status.Error -> return@withContext this
+                        is Status.Error -> return@withContext Status.Error(error)
                         is Status.Success -> localAlbumDataSource.cacheAlbums(data)
                     }
                 }
             }
-            return@withContext Status.Success(localAlbumDataSource.getAll())
+            return@withContext Status.Success(getAlbumsAsFlow())
         }
 
-    override fun getAlbumsAsFlow() = localAlbumDataSource.getPagingSource(PAGE_SIZE)
+    private fun getAlbumsAsFlow() = localAlbumDataSource.getPagingSource(PAGE_SIZE)
 
     private companion object {
         const val PAGE_SIZE = 10

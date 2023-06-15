@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.icarie.lbc.databinding.FragmentAlbumsBinding
+import com.icarie.lbc.ui.UIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 class AlbumsFragment : Fragment() {
 
     private val albumsViewModel: AlbumsViewModel by viewModels()
+    private lateinit var binding: FragmentAlbumsBinding
 
     private val albumAdapter = AlbumAdapter()
 
@@ -26,6 +28,7 @@ class AlbumsFragment : Fragment() {
     ): View {
         return FragmentAlbumsBinding.inflate(inflater)
             .apply {
+                binding = this
                 lifecycleOwner = viewLifecycleOwner
                 viewModel = albumsViewModel
                 albums.adapter = albumAdapter
@@ -37,7 +40,27 @@ class AlbumsFragment : Fragment() {
 
         lifecycleScope.launch {
             albumsViewModel.uiState.collectLatest {
-                albumAdapter.updateData(it)
+                when (it) {
+                    is UIState.Failure -> {
+                        binding.progress.visibility = View.GONE
+                        binding.error.visibility = View.VISIBLE
+                    }
+
+                    is UIState.Loading -> {
+                        binding.progress.visibility = View.VISIBLE
+                        binding.error.visibility = View.GONE
+                    }
+
+                    is UIState.Success -> {
+                        binding.progress.visibility = View.GONE
+                        binding.error.visibility = View.GONE
+                        it.data?.collectLatest { pagingData ->
+                            albumAdapter.updateData(pagingData)
+                        }
+                    }
+
+                    else -> Unit
+                }
             }
         }
     }
