@@ -1,10 +1,13 @@
 package com.icarie.data.di
 
+import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
+import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.icarie.data.albums.AlbumRetrofitService
+import com.icarie.data.albums.cache.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,7 +51,19 @@ class ProviderAppModule {
     @Provides
     fun providesAlbumRetrofitService(retrofit: Retrofit) = retrofit.create<AlbumRetrofitService>()
 
+    @Provides
+    fun providesAlbumsDataBase(application: Application) =
+        Room.databaseBuilder(
+            context = application,
+            klass = AppDatabase::class.java,
+            name = DATABASE_NAME
+        ).build()
+
+    @Provides
+    fun providesAlbumsDao(appDatabase: AppDatabase) = appDatabase.cachedAlbumDao()
+
     companion object {
         private const val BASE_URL: String = "https://static.leboncoin.fr/"
+        private const val DATABASE_NAME: String = "local-cache"
     }
 }

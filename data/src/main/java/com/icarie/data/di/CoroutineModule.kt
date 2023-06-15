@@ -15,6 +15,9 @@ annotation class RepositoryCoroutineContext
 @Qualifier
 annotation class NavigationServiceCoroutineContext
 
+@Qualifier
+annotation class DataSourceCoroutineContext
+
 @Module
 @InstallIn(SingletonComponent::class)
 class CoroutineModule {
@@ -28,4 +31,9 @@ class CoroutineModule {
     @NavigationServiceCoroutineContext
     fun provideNavigationServiceCoroutineContext(): CoroutineContext =
         Dispatchers.Main + CoroutineName("Navigation Service")
+
+    @Provides
+    @DataSourceCoroutineContext
+    fun provideDataSourceCoroutineContext(): CoroutineContext =
+        Dispatchers.IO + CoroutineName("DataSource")
 }

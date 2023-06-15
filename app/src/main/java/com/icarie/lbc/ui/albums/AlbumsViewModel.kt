@@ -1,4 +1,4 @@
-package com.icarie.lbc.ui.main
+package com.icarie.lbc.ui.albums
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,12 +9,11 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(
+class AlbumsViewModel @Inject constructor(
     private val getAlbumsAsFlowUseCase: GetAlbumsAsFlowUseCase
 ) : ViewModel() {
 
     fun fetch() {
-        Timber.e("init")
         viewModelScope.launch {
             getAlbumsAsFlowUseCase.invoke().collect {
                 Timber.e(it.toString())

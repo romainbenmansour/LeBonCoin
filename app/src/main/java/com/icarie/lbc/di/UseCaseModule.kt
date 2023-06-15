@@ -1,5 +1,7 @@
 package com.icarie.lbc.di
 
+import com.icarie.domain.album.DefaultGetAlbumsAsFlowUseCase
+import com.icarie.domain.album.GetAlbumsAsFlowUseCase
 import com.icarie.domain.network.GetNetworkStateUpdatesAsFlowUseCase
 import com.icarie.domain.network.GetNetworkStateUpdatesAsFlowUseCaseImpl
 import dagger.Binds
@@ -13,4 +15,7 @@ interface UseCaseModule {
 
     @Binds
     fun bindGetNetworkStateUpdatesAsFlowUseCase(impl: GetNetworkStateUpdatesAsFlowUseCaseImpl): GetNetworkStateUpdatesAsFlowUseCase
+
+    @Binds
+    fun bindGetAlbumsAsFlowUseCase(impl: DefaultGetAlbumsAsFlowUseCase): GetAlbumsAsFlowUseCase
 }
