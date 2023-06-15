@@ -1,15 +1,10 @@
 package com.icarie.lbc.utils
 
-import android.view.View
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.icarie.lbc.ui.UIState
+import coil.load
 
-@BindingAdapter("uiState", "viewValue")
-fun <T>updateVisibilityForUIState(
-    view: View,
-    viewValue: Int,
-    uiState: UIState<T>) {
-    (uiState as? UIState.Success)?.let {
-        view.visibility = viewValue
-    }
+@BindingAdapter("imageUrl")
+fun loadImage(imageView: ImageView, imageUrl: String) {
+    imageView.load(imageUrl)
 }

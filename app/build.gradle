@@ -52,6 +52,7 @@ dependencies {
     implementation libs.appCompat
     implementation libs.activity
     implementation libs.constraintLayout
+    implementation libs.coil
 
     implementation libs.fragment
     implementation libs.navigationFragment

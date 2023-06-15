@@ -31,12 +31,20 @@ pagingCommon = "androidx.paging:paging-common-ktx:3.1.1"
 # Play Services
 playServices = 'com.google.android.gms:play-services-base:18.2.0'
 
+# Splash
 coreSplashscreen = "androidx.core:core-splashscreen:1.0.1"
+
+# App
 activity = "androidx.activity:activity-ktx:1.7.1"
 fragment = "androidx.fragment:fragment-ktx:1.3.2"
 appCompat = "androidx.appcompat:appcompat:1.6.1"
 material = "com.google.android.material:material:1.8.0"
 constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+
+# Async Image Loading
+coil = "io.coil-kt:coil:2.4.0"
+
+# Lifecycle
 lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
 lifecycleProcess = "androidx.lifecycle:lifecycle-process:2.6.1"
 lifecycleCommon = "androidx.lifecycle:lifecycle-common:2.6.1"
