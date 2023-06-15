@@ -19,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(SingletonComponent::class)
 class ProviderAppModule {

@@ -7,6 +7,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.icarie.lbc.ui.UIState" />
+
         <variable
             name="viewModel"
             type="com.icarie.lbc.ui.albums.AlbumsViewModel" />
@@ -19,22 +21,35 @@
         android:animateLayoutChanges="true"
         android:background="@color/white"
         android:descendantFocusability="beforeDescendants"
-        android:focusableInTouchMode="true"
-        android:padding="10dp">
+        android:focusableInTouchMode="true">
 
-        <TextView
-            android:id="@+id/use_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="t10"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/albums"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="6 utilisations" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progress"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_gravity="center|bottom"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:visibility="visible" />-->
+
+<!--        <androidx.constraintlayout.widget.Group-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:constraint_referenced_ids="albums" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

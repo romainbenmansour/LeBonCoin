@@ -8,6 +8,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+
 class DefaultAlbumRepository @Inject constructor(
     @RepositoryCoroutineContext private val coroutineContext: CoroutineContext,
     private val localAlbumDataSource: LocalAlbumDataSource,
@@ -15,7 +16,7 @@ class DefaultAlbumRepository @Inject constructor(
 ) : AlbumRepository {
 
     // First shot with no pagination
-    override suspend fun getAlbums(): Status<List<Album>> =
+    override suspend fun getAlbums(pageSize: Int): Status<List<Album>> =
         withContext(coroutineContext) {
             if (!localAlbumDataSource.hasCache()) {
                 remoteAlbumDataSource.fetchAlbums().apply {
@@ -27,4 +28,10 @@ class DefaultAlbumRepository @Inject constructor(
             }
             return@withContext Status.Success(localAlbumDataSource.getAll())
         }
+
+    override fun getAlbumsAsFlow() = localAlbumDataSource.getPagingSource(PAGE_SIZE)
+
+    private companion object {
+        const val PAGE_SIZE = 10
+    }
 }

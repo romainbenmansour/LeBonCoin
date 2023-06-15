@@ -1,11 +1,17 @@
 package com.icarie.data.albums
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.map
 import com.icarie.data.albums.cache.CachedAlbumDao
 import com.icarie.data.albums.cache.toAlbum
 import com.icarie.data.albums.cache.toCachedAlbum
 import com.icarie.data.di.DataSourceCoroutineContext
 import com.icarie.domain.models.Album
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -15,6 +21,8 @@ interface LocalAlbumDataSource {
     suspend fun hasCache(): Boolean
     fun cacheAlbums(data: List<Album>)
     fun getAll(): List<Album>
+
+    fun getPagingSource(pageSize: Int): Flow<PagingData<Album>>
 }
 
 class RoomLocalAlbumDataSource @Inject constructor(
@@ -36,4 +44,14 @@ class RoomLocalAlbumDataSource @Inject constructor(
     }
 
     override fun getAll(): List<Album> = albumDao.getAll().map { it.toAlbum() }
+    override fun getPagingSource(pageSize: Int): Flow<PagingData<Album>> =
+        Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { albumDao.pagingSource() },
+        ).flow.map { pagingData ->
+            pagingData.map { cached -> cached.toAlbum() }
+        }
 }

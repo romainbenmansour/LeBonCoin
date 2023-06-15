@@ -13,6 +13,9 @@ dependencies {
 
     implementation libs.javaxInject
 
+    // Kotlin only
+    implementation libs.pagingCommon
+
     testImplementation libs.junit
     testImplementation libs.mockk
 }

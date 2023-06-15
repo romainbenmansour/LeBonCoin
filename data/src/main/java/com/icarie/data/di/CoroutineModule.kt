@@ -1,5 +1,6 @@
 package com.icarie.data.di
 
+import com.icarie.domain.common.UseCaseCoroutineContext
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,6 +22,11 @@ annotation class DataSourceCoroutineContext
 @Module
 @InstallIn(SingletonComponent::class)
 class CoroutineModule {
+
+    @Provides
+    @UseCaseCoroutineContext
+    fun providesUseCaseCoroutineContext(): CoroutineContext =
+        Dispatchers.Default + CoroutineName("Use Case")
 
     @Provides
     @RepositoryCoroutineContext

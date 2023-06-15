@@ -12,10 +12,21 @@ kotlin = '1.8.10'
 kotlinCompiler = '1.4.2'
 coroutinesVersion = '1.6.4'
 
+# Navigation
+navigationVersion = '2.6.0'
+
+# Room
+roomVersion = '2.5.1'
+
 [libraries]
 
 # Retrofit
 retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+gsonConverter = "com.squareup.retrofit2:converter-gson:2.9.0"
+
+# Paging
+paging = "androidx.paging:paging-runtime-ktx:3.1.1"
+pagingCommon = "androidx.paging:paging-common-ktx:3.1.1"
 
 # Play Services
 playServices = 'com.google.android.gms:play-services-base:18.2.0'
@@ -30,6 +41,16 @@ lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
 lifecycleProcess = "androidx.lifecycle:lifecycle-process:2.6.1"
 lifecycleCommon = "androidx.lifecycle:lifecycle-common:2.6.1"
 lifecycleViewModels = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+
+# Navigation
+navigationFragment = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
+navigationUI = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationVersion" }
+
+# Room
+roomRuntime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
+roomProcessor = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+roomPaging = { module = "androidx.room:room-paging", version.ref = "roomVersion" }
+roomKapt = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 
 # Kotlin
 kotlinCore = "androidx.core:core-ktx:1.10.0"

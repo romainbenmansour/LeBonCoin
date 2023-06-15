@@ -32,18 +32,19 @@ android {
 dependencies {
     implementation project(path: ':domain')
 
+    api libs.paging
+    api libs.pagingCommon
+
     implementation libs.kotlinCore
     implementation libs.coroutines
 
     implementation libs.retrofit
-    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    implementation libs.gsonConverter
 
-    implementation("androidx.room:room-runtime:2.5.1")
-    annotationProcessor("androidx.room:room-compiler:2.5.1")
-
-    // To use Kotlin annotation processing tool (kapt)
-    kapt("androidx.room:room-compiler:2.5.1")
+    implementation libs.roomRuntime
+    implementation libs.roomPaging
+    annotationProcessor libs.roomProcessor
+    kapt libs.roomKapt
 
     implementation libs.timber
 
