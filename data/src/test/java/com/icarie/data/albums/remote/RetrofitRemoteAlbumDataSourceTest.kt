@@ -14,6 +14,7 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
 import utils.TestWithCoroutine
+import java.lang.IllegalStateException
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class RetrofitRemoteAlbumDataSourceTest : TestWithCoroutine() {
@@ -61,5 +62,17 @@ class RetrofitRemoteAlbumDataSourceTest : TestWithCoroutine() {
         coVerify(exactly = 1) { albumRetrofitService.getAlbums() }
 
         Assert.assertTrue(status is Status.Success)
+    }
+
+    @Test
+    fun `test exception thrown during fetch returns an error`() = runTest {
+        coEvery { albumRetrofitService.getAlbums() } throws IllegalStateException()
+
+        val status = remoteAlbumDataSource.fetchAlbums()
+
+        coVerify(exactly = 1) { albumRetrofitService.getAlbums() }
+
+        Assert.assertTrue(status is Status.Error)
+        Assert.assertTrue((status as Status.Error).error == AppError.Offline)
     }
 }
