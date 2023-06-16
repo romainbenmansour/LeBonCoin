@@ -32,8 +32,19 @@ android {
 dependencies {
     implementation project(path: ':domain')
 
+    api libs.paging
+    api libs.pagingCommon
+
     implementation libs.kotlinCore
     implementation libs.coroutines
+
+    implementation libs.retrofit
+    implementation libs.gsonConverter
+
+    implementation libs.roomRuntime
+    implementation libs.roomPaging
+    annotationProcessor libs.roomProcessor
+    kapt libs.roomKapt
 
     implementation libs.timber
 
@@ -43,7 +54,10 @@ dependencies {
     implementation libs.javaxInject
 
     testImplementation libs.junit
-    testImplementation libs.testExtJUnit
-    testImplementation libs.expressoCore
+    testImplementation libs.mockk
+    testImplementation libs.turbine
+    testImplementation libs.testKotlinxCoroutines
+    testImplementation libs.testCore
+    testImplementation libs.testArchCore
     testImplementation libs.mockk
 }
