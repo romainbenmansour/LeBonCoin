@@ -1,6 +1,11 @@
 # LeBonCoin
 Technical test requested by LeBonCoin
 
+"Vous devez réaliser une application native Android affichant la liste des items suivant (titres
+d'albums) : https://static.leboncoin.fr/img/shared/technical-test.json
+Les données contenues dans ce json doivent être téléchargées par l'app au Runtime, et non
+mises manuellement dans les assets de l'app."
+
 # Version Catalog
 The app uses a version catalog to better handle external dependencies within the app. 
 
