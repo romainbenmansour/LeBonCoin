@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.icarie.domain.models.Album
+import com.icarie.domain.albums.Album
 import com.icarie.lbc.databinding.AlbumItemBinding
 
 class AlbumAdapter(diffCallback: DiffUtil.ItemCallback<Album> = AlbumComparator) :

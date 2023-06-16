@@ -14,9 +14,6 @@ import kotlin.coroutines.CoroutineContext
 annotation class RepositoryCoroutineContext
 
 @Qualifier
-annotation class NavigationServiceCoroutineContext
-
-@Qualifier
 annotation class DataSourceCoroutineContext
 
 @Module
@@ -32,11 +29,6 @@ class CoroutineModule {
     @RepositoryCoroutineContext
     fun provideRepositoryCoroutineContext(): CoroutineContext =
         Dispatchers.IO + CoroutineName("Repository")
-
-    @Provides
-    @NavigationServiceCoroutineContext
-    fun provideNavigationServiceCoroutineContext(): CoroutineContext =
-        Dispatchers.Main + CoroutineName("Navigation Service")
 
     @Provides
     @DataSourceCoroutineContext

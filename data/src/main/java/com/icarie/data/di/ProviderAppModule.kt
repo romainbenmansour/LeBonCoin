@@ -6,7 +6,7 @@ import android.net.ConnectivityManager
 import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.icarie.data.albums.AlbumRetrofitService
+import com.icarie.data.albums.remote.AlbumRetrofitService
 import com.icarie.data.albums.cache.AppDatabase
 import dagger.Module
 import dagger.Provides

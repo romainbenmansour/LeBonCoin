@@ -1,4 +1,4 @@
-package com.icarie.domain.models
+package com.icarie.domain.albums
 
 data class Album(
     val albumId: Int,

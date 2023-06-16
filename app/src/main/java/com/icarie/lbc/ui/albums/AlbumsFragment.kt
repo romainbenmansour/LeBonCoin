@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.icarie.lbc.databinding.FragmentAlbumsBinding
+import com.icarie.lbc.ui.UIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 class AlbumsFragment : Fragment() {
 
     private val albumsViewModel: AlbumsViewModel by viewModels()
+    private lateinit var binding: FragmentAlbumsBinding
 
     private val albumAdapter = AlbumAdapter()
 
@@ -26,6 +28,7 @@ class AlbumsFragment : Fragment() {
     ): View {
         return FragmentAlbumsBinding.inflate(inflater)
             .apply {
+                binding = this
                 lifecycleOwner = viewLifecycleOwner
                 viewModel = albumsViewModel
                 albums.adapter = albumAdapter
@@ -36,9 +39,40 @@ class AlbumsFragment : Fragment() {
         super.onStart()
 
         lifecycleScope.launch {
-            albumsViewModel.uiState.collectLatest {
-                albumAdapter.updateData(it)
+            handleUiState()
+        }
+    }
+
+    private suspend fun handleUiState() {
+        albumsViewModel.uiState.collect {
+            when (it) {
+                is UIState.Failure -> {
+                    binding.progress.visibility = View.GONE
+                    binding.error.visibility = View.VISIBLE
+                    binding.albums.visibility = View.VISIBLE
+                }
+
+                is UIState.Loading -> {
+                    binding.progress.visibility = View.VISIBLE
+                    binding.error.visibility = View.GONE
+                    binding.albums.visibility = View.GONE
+                }
+
+                is UIState.Success -> {
+                    binding.progress.visibility = View.GONE
+                    binding.error.visibility = View.GONE
+                    binding.albums.visibility = View.VISIBLE
+                    collectAlbums()
+                }
+
+                else -> Unit
             }
+        }
+    }
+
+    private suspend fun collectAlbums() {
+        albumsViewModel.albumFlow.collectLatest {
+            albumAdapter.updateData(it)
         }
     }
 }
