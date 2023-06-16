@@ -1,12 +1,9 @@
-package com.icarie.data.albums
+package com.icarie.data.albums.cache
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.icarie.data.albums.cache.CachedAlbumDao
-import com.icarie.data.albums.cache.toAlbum
-import com.icarie.data.albums.cache.toCachedAlbum
 import com.icarie.data.di.DataSourceCoroutineContext
 import com.icarie.domain.albums.Album
 import kotlinx.coroutines.CoroutineScope

@@ -18,4 +18,9 @@ dependencies {
 
     testImplementation libs.junit
     testImplementation libs.mockk
+    testImplementation libs.turbine
+    testImplementation libs.testKotlinxCoroutines
+    testImplementation libs.testCore
+    testImplementation libs.testArchCore
+    testImplementation libs.mockk
 }

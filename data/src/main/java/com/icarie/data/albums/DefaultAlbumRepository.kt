@@ -1,6 +1,7 @@
-package com.icarie.data.albums.remote
+package com.icarie.data.albums
 
-import com.icarie.data.albums.LocalAlbumDataSource
+import com.icarie.data.albums.cache.LocalAlbumDataSource
+import com.icarie.data.albums.remote.RemoteAlbumDataSource
 import com.icarie.data.di.RepositoryCoroutineContext
 import com.icarie.domain.albums.AlbumRepository
 import com.icarie.domain.common.Status
@@ -15,7 +16,7 @@ class DefaultAlbumRepository @Inject constructor(
     private val remoteAlbumDataSource: RemoteAlbumDataSource
 ) : AlbumRepository {
 
-    override suspend fun getAlbums(pageSize: Int): Status<Unit> =
+    override suspend fun getAlbums(): Status<Unit> =
         withContext(coroutineContext) {
             if (!localAlbumDataSource.hasCache()) {
                 remoteAlbumDataSource.fetchAlbums().apply {
@@ -28,5 +29,9 @@ class DefaultAlbumRepository @Inject constructor(
             return@withContext Status.Success(Unit)
         }
 
-    override fun getAlbumsAsFlow() = localAlbumDataSource.getPagingSource(AlbumRepository.PAGE_SIZE)
+    override fun getAlbumsAsFlow() = localAlbumDataSource.getPagingSource(PAGE_SIZE)
+
+    companion object {
+        const val PAGE_SIZE = 10
+    }
 }

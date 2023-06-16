@@ -1,6 +1,6 @@
 package com.icarie.data.di
 
-import com.icarie.data.albums.remote.DefaultAlbumRepository
+import com.icarie.data.albums.DefaultAlbumRepository
 import com.icarie.data.network.NetworkRepositoryImpl
 import com.icarie.domain.albums.AlbumRepository
 import com.icarie.domain.network.NetworkRepository
