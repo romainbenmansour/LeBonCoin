@@ -41,6 +41,7 @@ class RoomLocalAlbumDataSource @Inject constructor(
     }
 
     override fun getAll(): List<Album> = albumDao.getAll().map { it.toAlbum() }
+
     override fun getPagingSource(pageSize: Int): Flow<PagingData<Album>> =
         Pager(
             config = PagingConfig(
