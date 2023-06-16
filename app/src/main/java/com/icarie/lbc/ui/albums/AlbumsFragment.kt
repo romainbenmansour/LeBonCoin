@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.icarie.lbc.databinding.FragmentAlbumsBinding
 import com.icarie.lbc.ui.UIState
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,15 +34,13 @@ class AlbumsFragment : Fragment() {
                 lifecycleOwner = viewLifecycleOwner
                 viewModel = albumsViewModel
                 albums.adapter = albumAdapter
+            }.also {
+                viewLifecycleOwner.lifecycleScope.launch {
+                    viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                        handleUiState()
+                    }
+                }
             }.root
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        lifecycleScope.launch {
-            handleUiState()
-        }
     }
 
     private suspend fun handleUiState() {
