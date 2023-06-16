@@ -1,6 +1,6 @@
 package com.icarie.data.albums.remote
 
-import com.icarie.data.albums.DefaultAlbumRepository
+import com.icarie.data.albums.AlbumRepositoryImpl
 import com.icarie.data.albums.cache.LocalAlbumDataSource
 import com.icarie.domain.albums.Album
 import com.icarie.domain.common.Status
@@ -18,9 +18,9 @@ import org.junit.Test
 import utils.TestWithCoroutine
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class DefaultAlbumRepositoryTest : TestWithCoroutine() {
+class AlbumRepositoryImplTest : TestWithCoroutine() {
 
-    private lateinit var albumRepository: DefaultAlbumRepository
+    private lateinit var albumRepository: AlbumRepositoryImpl
 
     @RelaxedMockK
     lateinit var remoteAlbumDataSource: RemoteAlbumDataSource
@@ -31,7 +31,7 @@ class DefaultAlbumRepositoryTest : TestWithCoroutine() {
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        albumRepository = DefaultAlbumRepository(
+        albumRepository = AlbumRepositoryImpl(
             coroutineContext = unconfinedTestDispatcher,
             localAlbumDataSource = localAlbumDataSource,
             remoteAlbumDataSource = remoteAlbumDataSource
@@ -42,7 +42,7 @@ class DefaultAlbumRepositoryTest : TestWithCoroutine() {
     fun `test repository properly requests local data source for paging`() {
         albumRepository.getAlbumsAsFlow()
 
-        verify(exactly = 1) { localAlbumDataSource.getPagingSource(DefaultAlbumRepository.PAGE_SIZE) }
+        verify(exactly = 1) { localAlbumDataSource.getPagingSource(AlbumRepositoryImpl.PAGE_SIZE) }
     }
 
     @Test

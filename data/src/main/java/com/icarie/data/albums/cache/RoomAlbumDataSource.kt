@@ -22,7 +22,7 @@ interface LocalAlbumDataSource {
     fun getPagingSource(pageSize: Int): Flow<PagingData<Album>>
 }
 
-class RoomLocalAlbumDataSource @Inject constructor(
+class RoomAlbumDataSource @Inject constructor(
     @DataSourceCoroutineContext private val coroutineContext: CoroutineContext,
     private val albumDao: CachedAlbumDao
 ) : LocalAlbumDataSource {

@@ -1,7 +1,7 @@
 package albums
 
 import com.icarie.domain.albums.AlbumRepository
-import com.icarie.domain.albums.DefaultGetAlbumsUseCase
+import com.icarie.domain.albums.GetAlbumsUseCaseImpl
 import io.mockk.MockKAnnotations
 import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
@@ -11,9 +11,9 @@ import org.junit.Test
 import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class DefaultGetAlbumsUseCaseTest {
+class GetAlbumsUseCaseImplTest {
 
-    private lateinit var useCase: DefaultGetAlbumsUseCase
+    private lateinit var useCase: GetAlbumsUseCaseImpl
 
     @RelaxedMockK
     private lateinit var albumRepository: AlbumRepository
@@ -21,7 +21,7 @@ class DefaultGetAlbumsUseCaseTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        useCase = DefaultGetAlbumsUseCase(albumRepository)
+        useCase = GetAlbumsUseCaseImpl(albumRepository)
     }
 
     @Test

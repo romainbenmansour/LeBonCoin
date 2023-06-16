@@ -24,8 +24,13 @@ class AlbumsViewModel @Inject constructor(
     getPagedAlbumsUseCase: GetPagedAlbumsUseCase,
 ) : ViewModel() {
 
-    val albumFlow: Flow<PagingData<Album>> = getPagedAlbumsUseCase()
+    val albumFlow = getPagedAlbumsUseCase()
         .cachedIn(viewModelScope)
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = PagingData.empty()
+        )
 
     val uiState = flow { emit(getAlbumsUseCase()) }
         .map { status -> status.toUIState() }

@@ -1,16 +1,16 @@
 package albums
 
 import com.icarie.domain.albums.AlbumRepository
-import com.icarie.domain.albums.DefaultGetPagedAlbumsUseCase
+import com.icarie.domain.albums.GetPagedAlbumsUseCaseImpl
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verify
 import org.junit.Before
 import org.junit.Test
 
-class DefaultGetPagedAlbumsUseCaseTest {
+class GetPagedAlbumsUseCaseImplTest {
 
-    private lateinit var useCase: DefaultGetPagedAlbumsUseCase
+    private lateinit var useCase: GetPagedAlbumsUseCaseImpl
 
     @RelaxedMockK
     private lateinit var albumRepository: AlbumRepository
@@ -18,7 +18,7 @@ class DefaultGetPagedAlbumsUseCaseTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        useCase = DefaultGetPagedAlbumsUseCase(albumRepository)
+        useCase = GetPagedAlbumsUseCaseImpl(albumRepository)
     }
 
     @Test

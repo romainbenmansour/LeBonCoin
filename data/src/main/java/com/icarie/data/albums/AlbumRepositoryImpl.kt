@@ -10,7 +10,7 @@ import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 
-class DefaultAlbumRepository @Inject constructor(
+class AlbumRepositoryImpl @Inject constructor(
     @RepositoryCoroutineContext private val coroutineContext: CoroutineContext,
     private val localAlbumDataSource: LocalAlbumDataSource,
     private val remoteAlbumDataSource: RemoteAlbumDataSource

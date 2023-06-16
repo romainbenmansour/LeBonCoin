@@ -8,7 +8,7 @@ interface GetAlbumsUseCase {
     suspend operator fun invoke(): Status<Unit>
 }
 
-class DefaultGetAlbumsUseCase @Inject constructor(
+class GetAlbumsUseCaseImpl @Inject constructor(
     private val albumRepository: AlbumRepository
 ) : GetAlbumsUseCase {
 

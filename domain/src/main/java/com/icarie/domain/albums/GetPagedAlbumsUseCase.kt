@@ -9,7 +9,7 @@ interface GetPagedAlbumsUseCase {
     operator fun invoke(): Flow<PagingData<Album>>
 }
 
-class DefaultGetPagedAlbumsUseCase @Inject constructor(
+class GetPagedAlbumsUseCaseImpl @Inject constructor(
     private val albumRepository: AlbumRepository
 ) : GetPagedAlbumsUseCase {
 
