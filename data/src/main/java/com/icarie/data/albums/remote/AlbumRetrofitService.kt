@@ -1,6 +1,6 @@
-package com.icarie.data.albums
+package com.icarie.data.albums.remote
 
-import com.icarie.domain.models.Album
+import com.icarie.domain.albums.Album
 import retrofit2.Response
 import retrofit2.http.GET
 

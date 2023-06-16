@@ -8,7 +8,7 @@ import com.icarie.data.albums.cache.CachedAlbumDao
 import com.icarie.data.albums.cache.toAlbum
 import com.icarie.data.albums.cache.toCachedAlbum
 import com.icarie.data.di.DataSourceCoroutineContext
-import com.icarie.domain.models.Album
+import com.icarie.domain.albums.Album
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

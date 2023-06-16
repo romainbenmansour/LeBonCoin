@@ -18,5 +18,6 @@
     <string name="tabbar_title_home">Home</string>
 
     <string name="album_count_title">%1$d albums available</string>
+    <string name="albums_fetch_error">Une erreur s\'est produite pendant le chargement de la liste</string>
 
 </resources>

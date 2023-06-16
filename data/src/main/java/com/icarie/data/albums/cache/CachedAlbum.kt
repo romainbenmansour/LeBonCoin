@@ -2,7 +2,7 @@ package com.icarie.data.albums.cache
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.icarie.domain.models.Album
+import com.icarie.domain.albums.Album
 
 @Entity
 data class CachedAlbum(

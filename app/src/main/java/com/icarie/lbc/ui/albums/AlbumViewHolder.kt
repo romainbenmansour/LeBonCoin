@@ -1,7 +1,7 @@
 package com.icarie.lbc.ui.albums
 
 import androidx.recyclerview.widget.RecyclerView
-import com.icarie.domain.models.Album
+import com.icarie.domain.albums.Album
 import com.icarie.lbc.databinding.AlbumItemBinding
 
 class AlbumViewHolder(private val itemBinding: AlbumItemBinding) :
