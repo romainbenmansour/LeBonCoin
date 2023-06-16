@@ -28,6 +28,8 @@ bind and provide methods.
 
 # Architecture
 Clean Archi coupled with MVVM has been used for this test. This is pretty standard nowadays.
+Domain layer is kotlin only. No Android there.
+Both App and Data are Android aware
 
 # App
 ViewModels exposes state flows to be collected from composables for example. We are not using Compose in this case but still I wanted to keep the same mindset. 
