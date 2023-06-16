@@ -14,11 +14,15 @@ class RetrofitRemoteAlbumDataSource @Inject constructor(
 ) : RemoteAlbumDataSource {
 
     override suspend fun fetchAlbums(): Status<List<Album>> {
-        albumRetrofitService.getAlbums().apply {
-            return when {
-                isSuccessful -> Status.Success(body() ?: emptyList())
-                else -> Status.Error(AppError.Offline)
+        try {
+            albumRetrofitService.getAlbums().apply {
+                return when {
+                    isSuccessful -> Status.Success(body() ?: emptyList())
+                    else -> Status.Error(AppError.Offline)
+                }
             }
+        } catch (e: Throwable) {
+            return Status.Error(AppError.Offline)
         }
     }
 }
