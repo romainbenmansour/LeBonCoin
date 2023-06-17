@@ -18,32 +18,34 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class AlbumsFragment : Fragment() {
 
-    private val albumsViewModel: AlbumsViewModel by viewModels()
     private lateinit var binding: FragmentAlbumsBinding
 
+    private val albumsViewModel: AlbumsViewModel by viewModels()
     private val albumAdapter = AlbumAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return FragmentAlbumsBinding.inflate(inflater)
-            .apply {
-                binding = this
-                lifecycleOwner = viewLifecycleOwner
-                viewModel = albumsViewModel
-                albums.adapter = albumAdapter
-            }.also {
-                viewLifecycleOwner.lifecycleScope.launch {
-                    viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                        handleUiState()
-                    }
-                }
-            }.root
+    ): View = FragmentAlbumsBinding.inflate(inflater)
+        .apply {
+            binding = this
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = albumsViewModel
+            albums.adapter = albumAdapter
+        }.also {
+            prepareForLifecycle()
+        }.root
+
+    private fun prepareForLifecycle() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                collectUIState()
+            }
+        }
     }
 
-    private suspend fun handleUiState() {
+    private suspend fun collectUIState() {
         albumsViewModel.uiState.collect {
             when (it) {
                 is UIState.Failure -> {
@@ -71,7 +73,7 @@ class AlbumsFragment : Fragment() {
     }
 
     private suspend fun collectAlbums() {
-        albumsViewModel.albumFlow.collectLatest {
+        albumsViewModel.albumsFlow.collectLatest {
             albumAdapter.updateData(it)
         }
     }

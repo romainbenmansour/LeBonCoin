@@ -6,11 +6,9 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.icarie.domain.albums.GetAlbumsUseCase
 import com.icarie.domain.albums.GetPagedAlbumsUseCase
-import com.icarie.domain.albums.Album
 import com.icarie.lbc.ui.UIState
 import com.icarie.lbc.ui.toUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -24,7 +22,7 @@ class AlbumsViewModel @Inject constructor(
     getPagedAlbumsUseCase: GetPagedAlbumsUseCase,
 ) : ViewModel() {
 
-    val albumFlow = getPagedAlbumsUseCase()
+    val albumsFlow = getPagedAlbumsUseCase()
         .cachedIn(viewModelScope)
         .stateIn(
             scope = viewModelScope,

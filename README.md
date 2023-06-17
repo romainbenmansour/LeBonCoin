@@ -33,9 +33,15 @@ Both App and Data are Android aware
 
 # App
 ViewModels exposes state flows to be collected from composables for example. We are not using Compose in this case but still I wanted to keep the same mindset. 
-The AlbumsVieModel offers a UIState state flow allowing us to display loading, errors or view content depending on the case. We map Status to UIState via an extension. 
+The AlbumsVieModel offers a UIState state flow allowing us to display loading, errors or view content depending on the case. We map Status to UIState via an extension.
+State flows described above are bound to the viewModelScope meaning they will be cancelled automatically by the viewModel
 If we fail to fetch data, we want to show it to the user.
 If we are fetching the data, we also want to show it to the user.
+
+1. MainActivity is only used as an UI entry point.
+2. Fragments are used to handle the UI. We currently only have one fragment AlbumsFragment
+handling the albums display
+3. No navigation was implemented as it was not necessary
 
 # Data
 Data here mainly contains albums related classes. We have the repository in charge of managing the Album POJO.
