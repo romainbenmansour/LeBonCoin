@@ -42,7 +42,7 @@ If we are fetching the data, we also want to show it to the user.
 2. Fragments are used to handle the UI. We currently only have one fragment AlbumsFragment
 handling the albums display
 3. No navigation was implemented as it was not necessary
-4. Usually, the viewmodel exposes a stateflow of a UI data class with all the data needed for the view which is mapped domain models for exemple but it seemed a bit too much for a small technical test.
+4. Usually, the viewmodel exposes a stateflow of a UI data class with all the data needed for the view which is mapped from use cases but it seemed a bit too much for a small technical test.
 In this case, we could have had a UIAlbumsData only containing the the imageUrl, the title and the albumId.
 
 # Data
