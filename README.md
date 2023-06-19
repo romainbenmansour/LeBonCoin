@@ -42,6 +42,7 @@ If we are fetching the data, we also want to show it to the user.
 2. Fragments are used to handle the UI. We currently only have one fragment AlbumsFragment
 handling the albums display
 3. No navigation was implemented as it was not necessary
+4. Usually, I pass a UI Model with all the data needed for the view mapped domain models for exemple but it seemed a bit too much for a small technical test. In this case, we could have had a UIAlbum only containing the the imageUrl, the title and the albumId since we don't need the others fields
 
 # Data
 Data here mainly contains albums related classes. We have the repository in charge of managing the Album POJO.
